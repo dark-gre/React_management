@@ -1,21 +1,34 @@
-import App from "../App";
+import React, { lazy } from "react";
+import { Navigate } from "react-router-dom";
+
 import Home from "../views/Home";
-import About from "../views/About";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import About from "../views/About";
+// import User from "../views/User";
+const About = lazy(() => import("../views/About"));
+const User = lazy(() => import("../views/User"));
 
-//两种路由模式的组件，BrowserRouter,(history模式),HashRouter(hash模式)
-// const baseRouter = ()=>{
-//     return ()
-// }
-
-const baseRouter = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}></Route>
-      <Route path="/home" element={<Home />}></Route>
-      <Route path="/about" element={<About />}></Route>
-    </Routes>
-  </BrowserRouter>
+const withLoadingComponent = (comp: JSX.Element) => (
+  <React.Suspense fallback={<div>Loading... </div>}>{comp} </React.Suspense>
+  // 大括号包裹一下，因为穿进来的就是一个组件了
 );
 
-export default baseRouter;
+const routes = [
+  {
+    path: "/",
+    element: <Navigate to="/home" />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    element: withLoadingComponent(<About />),
+  },
+  {
+    path: "/user",
+    element: withLoadingComponent(<User />),
+  },
+];
+
+export default routes;
