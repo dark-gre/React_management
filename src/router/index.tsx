@@ -12,7 +12,7 @@ const Page2 = lazy(() => import("../views/Page2"));
 
 const withLoadingComponent = (comp: JSX.Element) => (
   <React.Suspense fallback={<div>Loading... </div>}>{comp} </React.Suspense>
-  // 大括号包裹一下，因为穿进来的就是一个组件了
+  // 大括号包裹一下，因为传进来的就是一个组件了
 );
 
 //普通新形式路由
