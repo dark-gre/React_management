@@ -4,11 +4,11 @@ import { Navigate } from "react-router-dom";
 import Home from "../views/Home";
 // import About from "../views/About";
 // import User from "../views/User";
-const About = lazy(() => import("../views/About"));
-const User = lazy(() => import("../views/User"));
+// const User = lazy(() => import("../views/User"));
 //
 const Page1 = lazy(() => import("../views/Page1"));
 const Page2 = lazy(() => import("../views/Page2"));
+const Page301 = lazy(() => import("../views/Page301"));
 
 const withLoadingComponent = (comp: JSX.Element) => (
   <React.Suspense fallback={<div>Loading... </div>}>{comp} </React.Suspense>
@@ -54,15 +54,21 @@ const routes = [
         element: withLoadingComponent(<Page2 />),
       },
       {
-        path: "/about",
-        element: withLoadingComponent(<About />),
+        path: "/page3/page301",
+        element: withLoadingComponent(<Page301 />),
       },
-      {
-        path: "/user",
-        element: withLoadingComponent(<User />),
-      },
+      // {
+      //   path: "/user",
+      //   element: withLoadingComponent(<User />),
+      // },
     ],
   },
+  //上面是嵌套路由，，，，，结束。 
+  {
+    path: "*",
+    element: <Navigate to="/page1" />,
+  },
+  //这个就是，当路由，不在路由表里面的时候，重定向。
 ];
 
 export default routes;
