@@ -12,6 +12,8 @@ import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 // useLocation，是路由里面的hook，获取路由相关信息。
+// const currentRoute = useLocation()
+//console.log('----',currentRoute)
 
 type MenuItem = Required<MenuProps>["items"][number];
 // 登录请求到数据之后，跟items匹配
@@ -95,6 +97,11 @@ const items: MenuItem[] = [
     key: "page5",
     icon: <FileOutlined />,
   },
+  {
+    label: "其他",
+    key: "/otherTest/index",
+    icon: <DesktopOutlined />,
+  },
 ];
 
 const CompMenu: React.FC = () => {
@@ -113,11 +120,13 @@ const CompMenu: React.FC = () => {
       items[i]!["children"] &&
       items[i]!["children"].length > 0 &&
       items[i]!["children"].find(findKey)
+      //find方法
     ) {
       //ts语法，items[i].children    ==>   items[i]?['children']，这里ts不会报错了。但是，会被认为是三元运算符，
       //ts语法，items[i].children    ==>   items[i]！['children']，这里ts不会报错了。换成！,认为是items必然存在。但是还未解决红下划线的问题，需要用配置项来处理。
       //这里注意find的用法，find需要传一个方法，这个方法返回的是一个true。
-      firstOpenKey = items[i]!.key;
+      firstOpenKey = items[i]!.key as string;//这里不添加as string 前面变量会报错
+
       break;
       //循环到这里，找到数值之后，break就好了，就不用遍历下面的了。
     }
@@ -140,7 +149,7 @@ const CompMenu: React.FC = () => {
   return (
     <Menu
       theme="dark"
-      // defaultSelectedKeys={["/page1"]}
+      // defaultSelectedKeys={["/page1"]}//默认样式问题
       defaultSelectedKeys={[currenRoute.pathname]}
       mode="inline"
       items={items}

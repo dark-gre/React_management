@@ -4,7 +4,7 @@ import "reset-css";
 import { BrowserRouter } from "react-router-dom";
 //ui框架的样式
 
-//全局样式
+// 全局样式
 import "@/assets/styles/global.scss";
 // import '@'
 // 组件的样式
@@ -16,6 +16,7 @@ import App from "./App.tsx";
 // import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+  //严格模式  的开发环境下面，组件都会执行两次，，生产环境不会
   <React.StrictMode>
     <BrowserRouter>
       <App />
