@@ -80,7 +80,7 @@ const App: React.FC = () => {
           onClick={memu}
           //菜单的展开和回收事件
           onOpenChange={openhandlemenu}
-          
+
           //展示的当前项。
           openKeys={openkeys}
         />

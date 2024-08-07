@@ -1,0 +1,17 @@
+.ant-table-row-selected {
+  border: 3px solid saddlebrown !important;
+  background-color: aquamarine;
+}
+
+.ant-table-row-selected {
+  border: 3px solid saddlebrown !important;
+  background-color: aquamarine;
+}
+.wodediv {
+  :global {
+    .ant-table-row .ant-table-row-level-0 .ant-table-row-selected {
+      border: 3px solid saddlebrown !important;
+      background-color: aquamarine;
+    }
+  }
+}

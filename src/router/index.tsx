@@ -6,9 +6,17 @@ import Home from "../views/Home";
 // import User from "../views/User";
 // const User = lazy(() => import("../views/User"));
 //
+import Login from "../views/Login/index";
+//login这种页面不需要懒加载这种形式
+
 const Page1 = lazy(() => import("../views/Page1"));
 const Page2 = lazy(() => import("../views/Page2"));
 const Page301 = lazy(() => import("../views/Page301"));
+// const Login = lazy(() => import("../views/Login/index"));
+
+const ViewTest = lazy(() => import("../views/otherView/index"));
+
+const Error = lazy(() => import("../views/error"));
 
 const withLoadingComponent = (comp: JSX.Element) => (
   <React.Suspense fallback={<div>Loading... </div>}>{comp} </React.Suspense>
@@ -61,14 +69,28 @@ const routes = [
       //   path: "/user",
       //   element: withLoadingComponent(<User />),
       // },
+      {
+        path: "/otherTest/index",
+        element: withLoadingComponent(<ViewTest />),
+      },
     ],
   },
   //上面是嵌套路由，，，，，结束。 
   {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: "/error",
+    element: withLoadingComponent(<Error />),
+  },
+  {
     path: "*",
-    element: <Navigate to="/page1" />,
+    element: <Navigate to="/error" />,
+    // element: withLoadingComponent(<Error />),
   },
   //这个就是，当路由，不在路由表里面的时候，重定向。
+  //重定向，不会存放到路由历史中，无法退回
 ];
 
 export default routes;

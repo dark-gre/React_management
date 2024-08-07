@@ -4,6 +4,11 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+
+    //手动添加的配置项：
+    // "suppressImplicitAnyIndexErrors": true,
+    //
+
     "skipLibCheck": true,
 
     /* Bundler mode */

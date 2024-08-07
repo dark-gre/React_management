@@ -1,10 +1,12 @@
 //创建变量是用$创建
-$color: #fcf;
+// $color: #fcf;
+$color: rgb(254, 254, 254);
 
 body {
   background-color: $color;
   //   禁用文字选中
   user-select: none;
+  height: 100%;
 }
 
 img {
