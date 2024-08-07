@@ -1,7 +1,7 @@
 //组件形式的写法
 import App from "../App";
 import Home from "../views/Home";
-import About from "../views/About";
+import About from "../views/User";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 //两种路由模式的组件，BrowserRouter,(history模式),HashRouter(hash模式)
@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //     return ()
 // }
 
+//老版本的路由实现。  
 const baseRouter = () => (
   <BrowserRouter>
     <Routes>

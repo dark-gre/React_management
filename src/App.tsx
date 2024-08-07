@@ -18,7 +18,7 @@ function App() {
       {/* <Link to="/home">Home </Link> |<Link to="/about">About </Link> |
       <Link to="/user">User </Link> */}
       {/* <Outlet></Outlet> */}
-      {/* 占位符组件，类似于窗口，用来展示组件的。   */}
+      {/* 占位符组件，类似于窗口，用来展示组件的。 旧的写法  */}
       {/* 新的路由方式 */}
       {outlet}
     </>
@@ -26,3 +26,4 @@ function App() {
 }
 
 export default App;
+//APP默认为顶级组件

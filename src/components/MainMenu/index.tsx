@@ -117,6 +117,8 @@ const CompMenu: React.FC = () => {
       //ts语法，items[i].children    ==>   items[i]?['children']，这里ts不会报错了。但是，会被认为是三元运算符，
       //ts语法，items[i].children    ==>   items[i]！['children']，这里ts不会报错了。换成！,认为是items必然存在。但是还未解决红下划线的问题，需要用配置项来处理。
       //这里注意find的用法，find需要传一个方法，这个方法返回的是一个true。
+      // console.log('findkey后面的for循环',items[i]!.key);
+      
       firstOpenKey = items[i]!.key;
       break;
       //循环到这里，找到数值之后，break就好了，就不用遍历下面的了。
@@ -133,21 +135,21 @@ const CompMenu: React.FC = () => {
   };
   const openhandlemenu = (keys: string[]) => {
     console.log("keys", keys);
-
-    setOpenkeys([keys[keys.length - 1]]);
+    //这里是打印了点击菜单之后，数组里面的值变化，
+    setOpenkeys([keys[keys.length - 1]]);//或者slice(-1)
   };
 
   return (
     <Menu
       theme="dark"
-      // defaultSelectedKeys={["/page1"]}
+      // defaultSelectedKeys={["/page1"]}  初始选中的菜单项key数组。  
       defaultSelectedKeys={[currenRoute.pathname]}
       mode="inline"
       items={items}
       onClick={memu}
-      //菜单的展开和回收事件
+      //菜单的展开和回收事件,（就是点击其他的菜单的时候，关闭上一次的菜单）菜单展开和回收的时候执行
       onOpenChange={openhandlemenu}
-      //展示的当前项。
+      //当前展开的菜单项的key数组，只负责展开相关属性 
       openKeys={openkeys}
     />
   );

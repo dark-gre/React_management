@@ -6,7 +6,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(),
-    //css按需引入插件的时候，配置项。
+    //css按需引入插件的时候，配置项。antd里面的按需引入时需要操作的。
   // styleImport({
   //   resolves:[
   //     AntdResolve()
